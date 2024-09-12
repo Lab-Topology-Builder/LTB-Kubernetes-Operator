@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: ghcr.io/lab-topology-builder/ltb-k8s-backend
-  newTag: v0.0.1
+  newTag: v0.0.2

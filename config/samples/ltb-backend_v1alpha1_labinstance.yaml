@@ -1,13 +1,7 @@
 apiVersion: ltb-backend.ltb/v1alpha1
 kind: LabInstance
 metadata:
-  labels:
-    app.kubernetes.io/name: labinstance
-    app.kubernetes.io/instance: labinstance-sample
-    app.kubernetes.io/part-of: operator
-    app.kubernetes.io/managed-by: kustomize
-    app.kubernetes.io/created-by: operator
   name: labinstance-sample
 spec:
   labTemplateReference: "labtemplate-sample"
-  dnsAddress: "example.com"
+  dnsAddress: "ltb2-test.network.garden"

@@ -1,16 +1,10 @@
 apiVersion: ltb-backend.ltb/v1alpha1
 kind: LabTemplate
 metadata:
-  labels:
-    app.kubernetes.io/name: labtemplate
-    app.kubernetes.io/instance: labtemplate-sample
-    app.kubernetes.io/part-of: operator
-    app.kubernetes.io/managed-by: kustomize
-    app.kubernetes.io/created-by: operator
   name: labtemplate-sample
 spec:
   nodes:
-  - name: "sample-node-1"
+  - name: "sample-vm-1"
     nodeTypeRef:
       type: "nodetypeubuntuvm"
       image: "ubuntu"
@@ -20,7 +14,37 @@ spec:
     - name: "ssh"
       port: 22
       protocol: "TCP"
-  - name: "sample-node-2"
+  - name: "sample-vm-2"
+    nodeTypeRef:
+      type: "nodetypeubuntuvm"
+      image: "ubuntu"
+      version: "22.04"
+    config: "I2Nsb3VkLWNvbmZpZwpwYXNzd29yZDogdWJ1bnR1CmNocGFzc3dkOiB7IGV4cGlyZTogRmFsc2UgfQpzc2hfcHdhdXRoOiBUcnVlCnBhY2thZ2VzOgogLSBxZW11LWd1ZXN0LWFnZW50CiAtIGNtYXRyaXgKcnVuY21kOgogLSBbIHN5c3RlbWN0bCwgc3RhcnQsIHFlbXUtZ3Vlc3QtYWdlbnQgXQo="
+    ports:
+    - name: "ssh"
+      port: 22
+      protocol: "TCP"
+  - name: "sample-vm-3"
+    nodeTypeRef:
+      type: "nodetypeubuntuvm"
+      image: "ubuntu"
+      version: "22.04"
+    config: "I2Nsb3VkLWNvbmZpZwpwYXNzd29yZDogdWJ1bnR1CmNocGFzc3dkOiB7IGV4cGlyZTogRmFsc2UgfQpzc2hfcHdhdXRoOiBUcnVlCnBhY2thZ2VzOgogLSBxZW11LWd1ZXN0LWFnZW50CiAtIGNtYXRyaXgKcnVuY21kOgogLSBbIHN5c3RlbWN0bCwgc3RhcnQsIHFlbXUtZ3Vlc3QtYWdlbnQgXQo="
+    ports:
+    - name: "ssh"
+      port: 22
+      protocol: "TCP"
+  - name: "sample-vm-4"
+    nodeTypeRef:
+      type: "nodetypeubuntuvm"
+      image: "ubuntu"
+      version: "22.04"
+    config: "I2Nsb3VkLWNvbmZpZwpwYXNzd29yZDogdWJ1bnR1CmNocGFzc3dkOiB7IGV4cGlyZTogRmFsc2UgfQpzc2hfcHdhdXRoOiBUcnVlCnBhY2thZ2VzOgogLSBxZW11LWd1ZXN0LWFnZW50CiAtIGNtYXRyaXgKcnVuY21kOgogLSBbIHN5c3RlbWN0bCwgc3RhcnQsIHFlbXUtZ3Vlc3QtYWdlbnQgXQo="
+    ports:
+    - name: "ssh"
+      port: 22
+      protocol: "TCP"
+  - name: "sample-pod-5"
     nodeTypeRef:
       type: "genericpod"
       image: "ghcr.io/insrapperswil/network-ninja"
@@ -30,7 +54,27 @@ spec:
       port: 22
       protocol: "TCP"
     config: '["/bin/bash", "-c", "apt update && apt install -y openssh-server && service ssh start && sleep 365d"]'
-  - name: "sample-node-3"
+  - name: "sample-pod-6"
+    nodeTypeRef:
+      type: "genericpod"
+      image: "ubuntu"
+      version: "22.04"
+    ports:
+    - name: "ssh"
+      port: 22
+      protocol: "TCP"
+    config: '["/bin/bash", "-c", "apt update && apt install -y openssh-server && service ssh start && sleep 365d"]'
+  - name: "sample-pod-7"
+    nodeTypeRef:
+      type: "genericpod"
+      image: "ubuntu"
+      version: "22.04"
+    ports:
+    - name: "ssh"
+      port: 22
+      protocol: "TCP"
+    config: '["/bin/bash", "-c", "apt update && apt install -y openssh-server && service ssh start && sleep 365d"]'
+  - name: "sample-pod-8"
     nodeTypeRef:
       type: "genericpod"
       image: "ubuntu"

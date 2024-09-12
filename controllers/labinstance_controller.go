@@ -162,7 +162,7 @@ func (r *LabInstanceReconciler) Reconcile(ctx context.Context, req ctrl.Request)
 
 		// Reconcile Ingress
 		ingress := &networkingv1.Ingress{}
-		ingress.Name = labInstance.Name + "-" + node.Name
+		ingress.Name = labInstance.Namespace + "-" + labInstance.Name + "-" + node.Name
 		retValue = r.ReconcileResource(labInstance, ingress, &node, nodeType.Spec.Kind)
 		if retValue.shouldReturn {
 			return retValue.result, retValue.err
@@ -459,7 +459,7 @@ func CreateIngress(labInstance *ltbv1alpha1.LabInstance, node *ltbv1alpha1.LabIn
 	if kind != "vm" && kind != "pod" {
 		return nil, errors.NewBadRequest("Kind must be either vm or pod")
 	}
-	name := labInstance.Name + "-" + node.Name
+	name := labInstance.Namespace + "-" + labInstance.Name + "-" + node.Name
 	metadata := metav1.ObjectMeta{
 		Name:      name,
 		Namespace: labInstance.Namespace,

@@ -624,17 +624,17 @@ template:
 
 	testPodIngress = &networkingv1.Ingress{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      testLabInstance.Name + "-" + testPodNode.Name,
+			Name:      testLabInstance.Namespace + "-" + testLabInstance.Name + "-" + testPodNode.Name,
 			Namespace: namespace,
 			Annotations: map[string]string{
-				"nginx.ingress.kubernetes.io/rewrite-target": "/?arg=pod&arg=" + testLabInstance.Name + "-" + testPodNode.Name + "&arg=bash",
+				"nginx.ingress.kubernetes.io/rewrite-target": "/?arg=pod&arg=" + testLabInstance.Namespace + "-" + testLabInstance.Name + "-" + testPodNode.Name + "&arg=bash",
 			},
 		},
 	}
 
 	testVMIngress = &networkingv1.Ingress{
 		ObjectMeta: metav1.ObjectMeta{
-			Name:      testLabInstance.Name + "-" + testVMNode.Name,
+			Name:      testLabInstance.Namespace + "-" + testLabInstance.Name + "-" + testVMNode.Name,
 			Namespace: namespace,
 		},
 	}
